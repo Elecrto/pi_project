@@ -1,7 +1,3 @@
-"""
-Минимальные тесты API без использования TestClient
-"""
-
 import sys
 import os
 
