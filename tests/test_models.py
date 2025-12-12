@@ -2,7 +2,7 @@ import pytest
 import sqlite3
 from datetime import datetime
 from pathlib import Path
-
+from models import Database
 
 def test_database_initialization(test_db):
     """Тест инициализации базы данных"""
