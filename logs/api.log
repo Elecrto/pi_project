@@ -1,0 +1,377 @@
+/Users/emilahm/Documents/РџСЂРѕРµРєС‚С‹ РЎРљ/speech_project/Press_center/api.py:119: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+INFO:     Started server process [19450]
+INFO:     Waiting for application startup.
+2025-11-27 16:41:49,981 - api - INFO - Р—Р°РїСѓСЃРє API СЃРµСЂРІРёСЃР°...
+2025-11-27 16:41:49,981 - api - INFO - Р—Р°РіСЂСѓР·РєР° РјРѕРґРµР»Рё Whisper РёР· /Users/emilahm/Documents/РџСЂРѕРµРєС‚С‹ РЎРљ/speech_project/Press_center/finetuned_whisper
+2025-11-27 16:41:49,981 - api - INFO - РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ СѓСЃС‚СЂРѕР№СЃС‚РІРѕ: cpu
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|в–€в–€в–€в–€в–€     | 1/2 [00:00<00:00,  9.05it/s]Loading checkpoint shards: 100%|в–€в–€в–€в–€в–€в–€в–€в–€в–€в–€| 2/2 [00:00<00:00, 15.31it/s]
+2025-11-27 16:41:50,344 - api - INFO - РњРѕРґРµР»СЊ Whisper СѓСЃРїРµС€РЅРѕ Р·Р°РіСЂСѓР¶РµРЅР°
+2025-11-27 16:41:50,344 - api - INFO - Р—Р°РіСЂСѓР·РєР° Р»РѕРєР°Р»СЊРЅРѕР№ РјРѕРґРµР»Рё СЃСѓРјРјР°СЂРёР·Р°С†РёРё РёР· /Users/emilahm/Documents/РџСЂРѕРµРєС‚С‹ РЎРљ/speech_project/Press_center/local_models/deepseek-r1-8b.gguf
+llama_context: n_ctx_per_seq (4096) < n_ctx_train (131072) -- the full capacity of the model will not be utilized
+ggml_metal_init: skipping kernel_get_rows_bf16                     (not supported)
+ggml_metal_init: skipping kernel_set_rows_bf16                     (not supported)
+ggml_metal_init: skipping kernel_mul_mv_bf16_f32                   (not supported)
+ggml_metal_init: skipping kernel_mul_mv_bf16_f32_c4                (not supported)
+ggml_metal_init: skipping kernel_mul_mv_bf16_f32_1row              (not supported)
+ggml_metal_init: skipping kernel_mul_mv_bf16_f32_l4                (not supported)
+ggml_metal_init: skipping kernel_mul_mv_bf16_bf16                  (not supported)
+ggml_metal_init: skipping kernel_mul_mv_id_bf16_f32                (not supported)
+ggml_metal_init: skipping kernel_mul_mm_bf16_f32                   (not supported)
+ggml_metal_init: skipping kernel_mul_mm_id_bf16_f16                (not supported)
+ggml_metal_init: skipping kernel_flash_attn_ext_bf16_h64           (not supported)
+ggml_metal_init: skipping kernel_flash_attn_ext_bf16_h80           (not supported)
+ggml_metal_init: skipping kernel_flash_attn_ext_bf16_h96           (not supported)
+ggml_metal_init: skipping kernel_flash_attn_ext_bf16_h112          (not supported)
+ggml_metal_init: skipping kernel_flash_attn_ext_bf16_h128          (not supported)
+ggml_metal_init: skipping kernel_flash_attn_ext_bf16_h192          (not supported)
+ggml_metal_init: skipping kernel_flash_attn_ext_bf16_hk192_hv128   (not supported)
+ggml_metal_init: skipping kernel_flash_attn_ext_bf16_h256          (not supported)
+ggml_metal_init: skipping kernel_flash_attn_ext_bf16_hk576_hv512   (not supported)
+ggml_metal_init: skipping kernel_flash_attn_ext_vec_bf16_h64       (not supported)
+ggml_metal_init: skipping kernel_flash_attn_ext_vec_bf16_h96       (not supported)
+ggml_metal_init: skipping kernel_flash_attn_ext_vec_bf16_h128      (not supported)
+ggml_metal_init: skipping kernel_flash_attn_ext_vec_bf16_h192      (not supported)
+ggml_metal_init: skipping kernel_flash_attn_ext_vec_bf16_hk192_hv128 (not supported)
+ggml_metal_init: skipping kernel_flash_attn_ext_vec_bf16_h256      (not supported)
+ggml_metal_init: skipping kernel_flash_attn_ext_vec_bf16_hk576_hv512 (not supported)
+ggml_metal_init: skipping kernel_cpy_f32_bf16                      (not supported)
+ggml_metal_init: skipping kernel_cpy_bf16_f32                      (not supported)
+ggml_metal_init: skipping kernel_cpy_bf16_bf16                     (not supported)
+2025-11-27 16:41:55,155 - api - INFO - Р›РѕРєР°Р»СЊРЅР°СЏ РјРѕРґРµР»СЊ СЃСѓРјРјР°СЂРёР·Р°С†РёРё СѓСЃРїРµС€РЅРѕ Р·Р°РіСЂСѓР¶РµРЅР°
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:59589 - "GET /list HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59632 - "GET /list HTTP/1.1" 200 OK
+2025-11-27 16:42:12,749 - api - INFO - Р¤Р°Р№Р» Р·Р°РіСЂСѓР¶РµРЅ: 2023-11-11_2023_11_11-15_43_58-860785-860785_right_channel.wav -> ID=48
+INFO:     127.0.0.1:59675 - "POST /upload HTTP/1.1" 200 OK
+2025-11-27 16:42:12,749 - api - INFO - РќР°С‡Р°Р»Рѕ РѕР±СЂР°Р±РѕС‚РєРё Р°СѓРґРёРѕ ID=48
+2025-11-27 16:42:12,750 - audio_converter - INFO - РљРѕРЅРІРµСЂС‚Р°С†РёСЏ Р°СѓРґРёРѕ: /Users/emilahm/Documents/РџСЂРѕРµРєС‚С‹ РЎРљ/speech_project/Press_center/uploads/96510708-1b9d-4459-bf32-5afd6ac6bd25.wav -> /Users/emilahm/Documents/РџСЂРѕРµРєС‚С‹ РЎРљ/speech_project/Press_center/uploads/96510708-1b9d-4459-bf32-5afd6ac6bd25_converted.wav
+/Users/emilahm/Documents/РџСЂРѕРµРєС‚С‹ РЎРљ/speech_project/Press_center/venv/lib/python3.11/site-packages/librosa/core/intervals.py:8: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+2025-11-27 16:42:14,124 - audio_converter - INFO - РђСѓРґРёРѕ СѓСЃРїРµС€РЅРѕ РєРѕРЅРІРµСЂС‚РёСЂРѕРІР°РЅРѕ. Р”Р»РёС‚РµР»СЊРЅРѕСЃС‚СЊ: 28.74СЃ
+2025-11-27 16:42:14,125 - api - INFO - РќР°С‡Р°Р»Рѕ С‚СЂР°РЅСЃРєСЂРёРїС†РёРё: /Users/emilahm/Documents/РџСЂРѕРµРєС‚С‹ РЎРљ/speech_project/Press_center/uploads/96510708-1b9d-4459-bf32-5afd6ac6bd25_converted.wav
+2025-11-27 16:42:14,126 - api - INFO - РўСЂР°РЅСЃРєСЂРёРїС†РёСЏ СЃ fine-tuned РјРѕРґРµР»СЊСЋ...
+INFO:     127.0.0.1:59677 - "GET /list HTTP/1.1" 200 OK
+`generation_config` default values have been modified to match model-specific defaults: {'suppress_tokens': [], 'begin_suppress_tokens': [220, 50257]}. If this is not desired, please set these values explicitly.
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+INFO:     127.0.0.1:59713 - "GET /status/48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59713 - "GET /status/48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59713 - "GET /status/48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59713 - "GET /status/48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59713 - "GET /status/48 HTTP/1.1" 200 OK
+A custom logits processor of type <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> has been passed to `.generate()`, but it was also created in `.generate()`, given its parameterization. The custom <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> will take precedence. Please check the docstring of <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> to see related `.generate()` flags.
+A custom logits processor of type <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> has been passed to `.generate()`, but it was also created in `.generate()`, given its parameterization. The custom <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> will take precedence. Please check the docstring of <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> to see related `.generate()` flags.
+INFO:     127.0.0.1:59713 - "GET /status/48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59713 - "GET /status/48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59713 - "GET /status/48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59713 - "GET /status/48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59713 - "GET /status/48 HTTP/1.1" 200 OK
+2025-11-27 16:42:34,423 - api - INFO - Р—Р°РіСЂСѓР·РєР° РјРѕРґРµР»Рё РґР»СЏ word-level alignment...
+INFO:     127.0.0.1:59713 - "GET /status/48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59713 - "GET /status/48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59713 - "GET /status/48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59713 - "GET /status/48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59713 - "GET /status/48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59713 - "GET /status/48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59713 - "GET /status/48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59713 - "GET /status/48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59713 - "GET /status/48 HTTP/1.1" 200 OK
+2025-11-27 16:42:50,617 - api - INFO - РџСЂРёРјРµРЅРµРЅРёРµ word-level alignment...
+INFO:     127.0.0.1:59713 - "GET /status/48 HTTP/1.1" 200 OK
+2025-11-27 16:42:53,139 - api - INFO - РўСЂР°РЅСЃРєСЂРёРїС†РёСЏ Р·Р°РІРµСЂС€РµРЅР°. Р”Р»РёРЅР° С‚РµРєСЃС‚Р°: 6 СЃРёРјРІРѕР»РѕРІ, СЃР»РѕРІ: 1
+2025-11-27 16:42:53,140 - api - INFO - Р“РµРЅРµСЂР°С†РёСЏ РєСЂР°С‚РєРѕРіРѕ СЃРѕРґРµСЂР¶Р°РЅРёСЏ РґР»СЏ Р°СѓРґРёРѕ ID=48
+2025-11-27 16:42:53,140 - api - INFO - РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ Р»РѕРєР°Р»СЊРЅР°СЏ РјРѕРґРµР»СЊ РґР»СЏ РіРµРЅРµСЂР°С†РёРё РєСЂР°С‚РєРѕРіРѕ СЃРѕРґРµСЂР¶Р°РЅРёСЏ
+2025-11-27 16:42:53,140 - api - INFO - РўРµРєСЃС‚ СЃР»РёС€РєРѕРј РєРѕСЂРѕС‚РєРёР№ РґР»СЏ СЃСѓРјРјР°СЂРёР·Р°С†РёРё (6 СЃРёРјРІРѕР»РѕРІ, РЅСѓР¶РЅРѕ РјРёРЅРёРјСѓРј 50)
+2025-11-27 16:42:53,140 - api - WARNING - РќРµ СѓРґР°Р»РѕСЃСЊ СЃРіРµРЅРµСЂРёСЂРѕРІР°С‚СЊ РєСЂР°С‚РєРѕРµ СЃРѕРґРµСЂР¶Р°РЅРёРµ РґР»СЏ ID=48
+2025-11-27 16:42:53,145 - api - INFO - РћР±СЂР°Р±РѕС‚РєР° Р°СѓРґРёРѕ ID=48 Р·Р°РІРµСЂС€РµРЅР° СѓСЃРїРµС€РЅРѕ
+INFO:     127.0.0.1:59713 - "GET /status/48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59751 - "GET /status/48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59783 - "GET /list HTTP/1.1" 200 OK
+2025-11-27 16:43:12,112 - api - INFO - Р¤Р°Р№Р» Р·Р°РіСЂСѓР¶РµРЅ: РќРѕРІР°СЏ Р·Р°РїРёСЃСЊ 4.m4a -> ID=49
+INFO:     127.0.0.1:59825 - "POST /upload HTTP/1.1" 200 OK
+2025-11-27 16:43:12,113 - api - INFO - РќР°С‡Р°Р»Рѕ РѕР±СЂР°Р±РѕС‚РєРё Р°СѓРґРёРѕ ID=49
+2025-11-27 16:43:12,114 - audio_converter - INFO - РљРѕРЅРІРµСЂС‚Р°С†РёСЏ Р°СѓРґРёРѕ: /Users/emilahm/Documents/РџСЂРѕРµРєС‚С‹ РЎРљ/speech_project/Press_center/uploads/a3b466b7-26db-440f-ba4c-460fcfb98b5e.m4a -> /Users/emilahm/Documents/РџСЂРѕРµРєС‚С‹ РЎРљ/speech_project/Press_center/uploads/a3b466b7-26db-440f-ba4c-460fcfb98b5e_converted.wav
+/Users/emilahm/Documents/РџСЂРѕРµРєС‚С‹ РЎРљ/speech_project/Press_center/audio_converter.py:43: UserWarning: PySoundFile failed. Trying audioread instead.
+  audio, sr = librosa.load(str(input_path), sr=self.target_sr, mono=True)
+/Users/emilahm/Documents/РџСЂРѕРµРєС‚С‹ РЎРљ/speech_project/Press_center/venv/lib/python3.11/site-packages/librosa/core/audio.py:183: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+2025-11-27 16:43:12,207 - audio_converter - INFO - РђСѓРґРёРѕ СѓСЃРїРµС€РЅРѕ РєРѕРЅРІРµСЂС‚РёСЂРѕРІР°РЅРѕ. Р”Р»РёС‚РµР»СЊРЅРѕСЃС‚СЊ: 38.29СЃ
+2025-11-27 16:43:12,208 - api - INFO - РќР°С‡Р°Р»Рѕ С‚СЂР°РЅСЃРєСЂРёРїС†РёРё: /Users/emilahm/Documents/РџСЂРѕРµРєС‚С‹ РЎРљ/speech_project/Press_center/uploads/a3b466b7-26db-440f-ba4c-460fcfb98b5e_converted.wav
+2025-11-27 16:43:12,209 - api - INFO - РўСЂР°РЅСЃРєСЂРёРїС†РёСЏ СЃ fine-tuned РјРѕРґРµР»СЊСЋ...
+INFO:     127.0.0.1:59827 - "GET /list HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+2025-11-27 16:44:31,549 - api - INFO - Р—Р°РіСЂСѓР·РєР° РјРѕРґРµР»Рё РґР»СЏ word-level alignment...
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+2025-11-27 16:44:44,494 - api - INFO - РџСЂРёРјРµРЅРµРЅРёРµ word-level alignment...
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+2025-11-27 16:44:50,221 - api - INFO - РўСЂР°РЅСЃРєСЂРёРїС†РёСЏ Р·Р°РІРµСЂС€РµРЅР°. Р”Р»РёРЅР° С‚РµРєСЃС‚Р°: 269 СЃРёРјРІРѕР»РѕРІ, СЃР»РѕРІ: 45
+2025-11-27 16:44:50,222 - api - INFO - Р“РµРЅРµСЂР°С†РёСЏ РєСЂР°С‚РєРѕРіРѕ СЃРѕРґРµСЂР¶Р°РЅРёСЏ РґР»СЏ Р°СѓРґРёРѕ ID=49
+2025-11-27 16:44:50,222 - api - INFO - РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ Р»РѕРєР°Р»СЊРЅР°СЏ РјРѕРґРµР»СЊ РґР»СЏ РіРµРЅРµСЂР°С†РёРё РєСЂР°С‚РєРѕРіРѕ СЃРѕРґРµСЂР¶Р°РЅРёСЏ
+2025-11-27 16:44:50,222 - api - INFO - Р—Р°РїСЂРѕСЃ РіРµРЅРµСЂР°С†РёРё РєСЂР°С‚РєРѕРіРѕ СЃРѕРґРµСЂР¶Р°РЅРёСЏ С‡РµСЂРµР· Р»РѕРєР°Р»СЊРЅСѓСЋ РјРѕРґРµР»СЊ...
+2025-11-27 16:45:47,070 - api - INFO - РџРѕР»СѓС‡РµРЅ РѕС‚РІРµС‚ РѕС‚ Р»РѕРєР°Р»СЊРЅРѕР№ РјРѕРґРµР»Рё (РґР»РёРЅР°: 1378 СЃРёРјРІРѕР»РѕРІ)
+2025-11-27 16:45:47,071 - api - INFO - РљСЂР°С‚РєРѕРµ СЃРѕРґРµСЂР¶Р°РЅРёРµ СѓСЃРїРµС€РЅРѕ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРѕ (РґР»РёРЅР°: 132 СЃРёРјРІРѕР»РѕРІ)
+2025-11-27 16:45:47,072 - api - INFO - РљСЂР°С‚РєРѕРµ СЃРѕРґРµСЂР¶Р°РЅРёРµ РґР»СЏ ID=49: 132 СЃРёРјРІРѕР»РѕРІ
+2025-11-27 16:45:47,079 - api - INFO - РћР±СЂР°Р±РѕС‚РєР° Р°СѓРґРёРѕ ID=49 Р·Р°РІРµСЂС€РµРЅР° СѓСЃРїРµС€РЅРѕ
+INFO:     127.0.0.1:59863 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59926 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59933 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59935 - "GET /list HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59940 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59942 - "GET /status/49 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59982 - "GET /list HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60027 - "GET /list HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60109 - "GET /list HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60159 - "GET /status/49 HTTP/1.1" 200 OK
+2025-12-01 10:35:47,018 - __main__ - WARNING - llama-cpp-python не установлен, используется Ollama API
+2025-12-01 10:35:47,021 - fastapi - ERROR - Form data requires "python-multipart" to be installed. 
+You can install "python-multipart" with: 
+
+pip install python-multipart
+
+2025-12-01 10:36:22,336 - __main__ - WARNING - llama-cpp-python не установлен, используется Ollama API
+2025-12-01 10:36:22,376 - api - WARNING - llama-cpp-python не установлен, используется Ollama API
+2025-12-01 10:36:22,379 - api - INFO - Запуск API сервиса...
+2025-12-01 10:36:22,379 - api - INFO - Загрузка модели Whisper из finetuned_whisper
+2025-12-01 10:36:22,379 - api - INFO - Используется устройство: cpu
+2025-12-01 10:36:22,431 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /finetuned_whisper/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 5c15ac9a-0691-48b0-93ce-87e4ab010b34)')' thrown while requesting HEAD https://huggingface.co/finetuned_whisper/resolve/main/preprocessor_config.json
+2025-12-01 10:36:22,432 - huggingface_hub.utils._http - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-01 10:36:23,452 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /finetuned_whisper/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 8d8f6b33-3ae0-4ec3-b0d7-df37b30dabd8)')' thrown while requesting HEAD https://huggingface.co/finetuned_whisper/resolve/main/preprocessor_config.json
+2025-12-01 10:36:23,453 - huggingface_hub.utils._http - WARNING - Retrying in 2s [Retry 2/5].
+2025-12-01 10:36:30,792 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /finetuned_whisper/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 6d8f9e37-b19d-43c6-9820-e24eb68cf724)')' thrown while requesting HEAD https://huggingface.co/finetuned_whisper/resolve/main/preprocessor_config.json
+2025-12-01 10:36:30,792 - huggingface_hub.utils._http - WARNING - Retrying in 4s [Retry 3/5].
+2025-12-01 10:36:39,913 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /finetuned_whisper/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 31f3c962-0e9b-44e4-a92f-e98f54ad6ec4)')' thrown while requesting HEAD https://huggingface.co/finetuned_whisper/resolve/main/preprocessor_config.json
+2025-12-01 10:36:39,913 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 4/5].
+2025-12-01 10:36:47,946 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /finetuned_whisper/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 8550fb6d-6715-4a9b-bcfc-4af87f4c31bc)')' thrown while requesting HEAD https://huggingface.co/finetuned_whisper/resolve/main/preprocessor_config.json
+2025-12-01 10:36:47,947 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 5/5].
+2025-12-01 10:37:03,045 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /finetuned_whisper/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 4fdbb0cb-9568-4b5d-8b01-efc0115cccf1)')' thrown while requesting HEAD https://huggingface.co/finetuned_whisper/resolve/main/preprocessor_config.json
+2025-12-01 10:37:03,046 - api - ERROR - Ошибка при загрузке модели Whisper: (MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /finetuned_whisper/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 4fdbb0cb-9568-4b5d-8b01-efc0115cccf1)')
+2025-12-01 10:37:03,046 - api - WARNING - Сервис будет работать без модели (для тестирования)
+2025-12-01 10:37:03,047 - api - WARNING - llama-cpp-python не доступен, будет использоваться Ollama API
+2025-12-01 16:02:21,395 - __main__ - WARNING - llama-cpp-python не установлен, используется Ollama API
+2025-12-01 16:02:21,435 - api - WARNING - llama-cpp-python не установлен, используется Ollama API
+2025-12-01 16:02:21,440 - api - INFO - Запуск API сервиса...
+2025-12-01 16:02:21,440 - api - INFO - Загрузка модели Whisper из C:\Users\ahtyamovar\ecosys\transcription_ecosys\finetuned_whisper
+2025-12-01 16:02:21,440 - api - INFO - Используется устройство: cpu
+2025-12-01 16:02:22,427 - api - INFO - Модель Whisper успешно загружена
+2025-12-01 16:02:22,428 - api - WARNING - llama-cpp-python не доступен, будет использоваться Ollama API
+2025-12-01 16:08:08,612 - api - INFO - Файл загружен: 4.wav -> ID=60
+2025-12-01 16:08:08,613 - api - INFO - Начало обработки аудио ID=60
+2025-12-01 16:08:08,622 - audio_converter - INFO - Конвертация аудио: C:\Users\ahtyamovar\ecosys\transcription_ecosys\uploads\db7ae49a-194a-4d41-8a67-ddeb6364a788.wav -> C:\Users\ahtyamovar\ecosys\transcription_ecosys\uploads\db7ae49a-194a-4d41-8a67-ddeb6364a788_converted.wav
+2025-12-01 16:08:08,805 - audio_converter - ERROR - Ошибка при конвертации аудио: cannot import name 'six' from 'pkg_resources.extern' (C:\Users\ahtyamovar\ecosys\transcription_ecosys\env\Lib\site-packages\pkg_resources\extern\__init__.py)
+2025-12-01 16:08:08,805 - api - ERROR - Ошибка при обработке аудио ID=60: cannot import name 'six' from 'pkg_resources.extern' (C:\Users\ahtyamovar\ecosys\transcription_ecosys\env\Lib\site-packages\pkg_resources\extern\__init__.py)
+2025-12-01 16:13:29,385 - __main__ - WARNING - llama-cpp-python не установлен, используется Ollama API
+2025-12-01 16:13:29,420 - api - WARNING - llama-cpp-python не установлен, используется Ollama API
+2025-12-01 16:13:29,424 - api - INFO - Запуск API сервиса...
+2025-12-01 16:13:29,425 - api - INFO - Загрузка модели Whisper из C:\Users\ahtyamovar\ecosys\transcription_ecosys\finetuned_whisper
+2025-12-01 16:13:29,425 - api - INFO - Используется устройство: cpu
+2025-12-01 16:13:30,450 - api - INFO - Модель Whisper успешно загружена
+2025-12-01 16:13:30,450 - api - WARNING - llama-cpp-python не доступен, будет использоваться Ollama API
+2025-12-01 16:15:27,340 - api - INFO - Файл загружен: 7.wav -> ID=61
+2025-12-01 16:15:27,341 - api - INFO - Начало обработки аудио ID=61
+2025-12-01 16:15:27,350 - audio_converter - INFO - Конвертация аудио: C:\Users\ahtyamovar\ecosys\transcription_ecosys\uploads\73063c0e-a5f6-4da9-b256-1a92c17ddb74.wav -> C:\Users\ahtyamovar\ecosys\transcription_ecosys\uploads\73063c0e-a5f6-4da9-b256-1a92c17ddb74_converted.wav
+2025-12-01 16:15:36,763 - audio_converter - INFO - Аудио успешно конвертировано. Длительность: 3.20с
+2025-12-01 16:15:36,772 - api - INFO - Начало транскрипции: C:\Users\ahtyamovar\ecosys\transcription_ecosys\uploads\73063c0e-a5f6-4da9-b256-1a92c17ddb74_converted.wav
+2025-12-01 16:15:36,772 - api - INFO - Транскрипция с fine-tuned моделью...
+2025-12-01 16:15:36,785 - api - INFO - Файл загружен: 7.wav -> ID=62
+2025-12-01 16:15:36,786 - api - INFO - Начало обработки аудио ID=62
+2025-12-01 16:15:36,800 - audio_converter - INFO - Конвертация аудио: C:\Users\ahtyamovar\ecosys\transcription_ecosys\uploads\f5fc9570-f5c1-4b65-80fe-206ad447aaa5.wav -> C:\Users\ahtyamovar\ecosys\transcription_ecosys\uploads\f5fc9570-f5c1-4b65-80fe-206ad447aaa5_converted.wav
+2025-12-01 16:15:36,815 - audio_converter - INFO - Аудио успешно конвертировано. Длительность: 3.20с
+2025-12-01 16:15:36,823 - api - INFO - Начало транскрипции: C:\Users\ahtyamovar\ecosys\transcription_ecosys\uploads\f5fc9570-f5c1-4b65-80fe-206ad447aaa5_converted.wav
+2025-12-01 16:15:36,825 - api - INFO - Транскрипция с fine-tuned моделью...
+2025-12-01 16:15:36,838 - api - INFO - Файл загружен: 7.wav -> ID=63
+2025-12-01 16:15:36,839 - api - INFO - Начало обработки аудио ID=63
+2025-12-01 16:15:36,850 - audio_converter - INFO - Конвертация аудио: C:\Users\ahtyamovar\ecosys\transcription_ecosys\uploads\e0fdf56c-2a67-42fa-b9ba-fdfbc3ab6e47.wav -> C:\Users\ahtyamovar\ecosys\transcription_ecosys\uploads\e0fdf56c-2a67-42fa-b9ba-fdfbc3ab6e47_converted.wav
+2025-12-01 16:15:36,869 - audio_converter - INFO - Аудио успешно конвертировано. Длительность: 3.20с
+2025-12-01 16:15:45,405 - api - INFO - Аудиофайл ID=61 удален
+2025-12-01 16:15:47,666 - api - INFO - Аудиофайл ID=62 удален
+2025-12-01 16:15:51,733 - api - INFO - Загрузка модели для word-level alignment...
+2025-12-01 16:15:51,743 - api - INFO - Загрузка модели для word-level alignment...
+2025-12-01 16:15:52,092 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 13c6cd14-2c49-4db9-a903-50976a161741)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:15:52,093 - huggingface_hub.utils._http - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-01 16:15:57,093 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 171cefd0-feda-46b2-ae58-96456d681442)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:15:57,094 - huggingface_hub.utils._http - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-01 16:15:58,122 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 5e0a37a7-408e-4965-8751-6c8c6934d5b2)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:15:58,123 - huggingface_hub.utils._http - WARNING - Retrying in 2s [Retry 2/5].
+2025-12-01 16:15:58,178 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 25a667f8-adfa-4ae5-b061-27e3956cd674)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:15:58,179 - huggingface_hub.utils._http - WARNING - Retrying in 2s [Retry 2/5].
+2025-12-01 16:16:00,138 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: c2f5e4f2-01d5-4875-9977-6fdc063f265f)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:16:00,139 - huggingface_hub.utils._http - WARNING - Retrying in 4s [Retry 3/5].
+2025-12-01 16:16:00,203 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 7f7c097b-e9cf-4eac-a121-1f03f94f6015)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:16:00,204 - huggingface_hub.utils._http - WARNING - Retrying in 4s [Retry 3/5].
+2025-12-01 16:16:04,163 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: d48c4f74-83bb-48c3-99ee-612d2f34a25d)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:16:04,164 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 4/5].
+2025-12-01 16:16:09,318 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 1f06f682-2209-4769-8f11-b5fe6914d27b)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:16:09,319 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 4/5].
+2025-12-01 16:16:12,180 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 1c871f1a-b8d5-41bf-a8fd-1727079ecf61)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:16:12,181 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 5/5].
+2025-12-01 16:16:20,196 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 84c355ad-17e3-4a2c-8e36-516d071f17f5)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:16:20,210 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 855751d6-a92a-4a77-9cba-1aafb6df4bec)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:16:20,211 - huggingface_hub.utils._http - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-01 16:16:22,453 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 7706c3e7-b500-4b21-9b27-3a879409c4a5)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:16:22,454 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 5/5].
+2025-12-01 16:16:26,277 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 2d2ea926-37e4-4518-861e-f067f82970aa)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:16:26,278 - huggingface_hub.utils._http - WARNING - Retrying in 2s [Retry 2/5].
+2025-12-01 16:16:28,297 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 7cbc0ec7-c925-48d9-b0d3-b039e14bcf78)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:16:28,298 - huggingface_hub.utils._http - WARNING - Retrying in 4s [Retry 3/5].
+2025-12-01 16:16:30,474 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 7e5e5db8-3e7e-46a0-9124-808252c22dda)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:16:35,561 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 7763742c-e98a-4c68-8cde-5570c8d8ca35)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:16:35,562 - huggingface_hub.utils._http - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-01 16:16:37,424 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 3e41cd7a-464e-4ff0-b3d0-5c65fb9e4bff)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:16:37,425 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 4/5].
+2025-12-01 16:16:41,642 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 8e1af75f-ad12-4557-b5c3-6593a7e1da82)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:16:41,644 - huggingface_hub.utils._http - WARNING - Retrying in 2s [Retry 2/5].
+2025-12-01 16:16:48,751 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: b97e02ca-97c7-4d1d-9365-8280e897326e)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:16:48,752 - huggingface_hub.utils._http - WARNING - Retrying in 4s [Retry 3/5].
+2025-12-01 16:16:50,532 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 7902371f-009c-4a98-a77e-f9d1c17ce2e9)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:16:50,533 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 5/5].
+2025-12-01 16:17:00,480 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 6739cd14-5690-4cf7-899a-c5de7d9a7a60)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:17:00,480 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 4/5].
+2025-12-01 16:17:03,655 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 73ad0ee2-ffe7-43fc-92bb-702d68a8fb8c)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:17:03,656 - api - WARNING - Ошибка при alignment, возвращаем текст без word timestamps: The chosen align_model "jonatasgrosman/wav2vec2-large-xlsr-53-russian" could not be found in huggingface (https://huggingface.co/models) or torchaudio (https://pytorch.org/audio/stable/pipelines.html#id14)
+2025-12-01 16:17:03,657 - api - INFO - Начало транскрипции: C:\Users\ahtyamovar\ecosys\transcription_ecosys\uploads\e0fdf56c-2a67-42fa-b9ba-fdfbc3ab6e47_converted.wav
+2025-12-01 16:17:03,657 - api - INFO - Генерация краткого содержания для аудио ID=61
+2025-12-01 16:17:03,658 - api - INFO - Используется Ollama API для генерации краткого содержания
+2025-12-01 16:17:03,658 - api - INFO - Транскрипция с fine-tuned моделью...
+2025-12-01 16:17:03,658 - api - WARNING - Не удалось сгенерировать краткое содержание для ID=61
+2025-12-01 16:17:03,669 - api - INFO - Обработка аудио ID=61 завершена успешно
+2025-12-01 16:17:08,503 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 49689863-b6dc-4ae4-8b28-62ab77a6ef8d)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:17:08,504 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 5/5].
+2025-12-01 16:17:13,583 - api - INFO - Загрузка модели для word-level alignment...
+2025-12-01 16:17:13,598 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: d12e7395-cca6-4344-8e8c-71c6b981d8a0)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:17:13,599 - huggingface_hub.utils._http - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-01 16:17:14,624 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: e531e788-96d2-4a0a-9762-29dfdd39ea8b)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:17:14,625 - huggingface_hub.utils._http - WARNING - Retrying in 2s [Retry 2/5].
+2025-12-01 16:17:16,522 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: f8866fad-3370-4d2f-b1bf-3738e41c68d3)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:17:16,524 - api - WARNING - Ошибка при alignment, возвращаем текст без word timestamps: The chosen align_model "jonatasgrosman/wav2vec2-large-xlsr-53-russian" could not be found in huggingface (https://huggingface.co/models) or torchaudio (https://pytorch.org/audio/stable/pipelines.html#id14)
+2025-12-01 16:17:16,525 - api - INFO - Генерация краткого содержания для аудио ID=62
+2025-12-01 16:17:16,525 - api - INFO - Используется Ollama API для генерации краткого содержания
+2025-12-01 16:17:16,525 - api - WARNING - Не удалось сгенерировать краткое содержание для ID=62
+2025-12-01 16:17:16,535 - api - INFO - Обработка аудио ID=62 завершена успешно
+2025-12-01 16:17:21,711 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 918b4b46-0129-4aac-8caa-e20257be3cb8)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:17:21,712 - huggingface_hub.utils._http - WARNING - Retrying in 4s [Retry 3/5].
+2025-12-01 16:17:30,789 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: f818678c-30f8-47b4-b030-af5b1e576784)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:17:30,790 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 4/5].
+2025-12-01 16:17:43,912 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 1d2600e9-8708-46af-8d27-b00281f64925)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:17:43,913 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 5/5].
+2025-12-01 16:17:51,929 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: a6faf485-ef2c-4e2c-843c-9a13f34b6107)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:17:51,942 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 46079935-f6b6-436e-bbf7-ac1c4489e2ba)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:17:51,943 - huggingface_hub.utils._http - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-01 16:17:52,964 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: e1f6b029-6e90-4e12-a178-00ba20ca9847)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:17:52,965 - huggingface_hub.utils._http - WARNING - Retrying in 2s [Retry 2/5].
+2025-12-01 16:18:00,071 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 10ef9de3-1527-4b63-be2c-489919a2f87b)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:18:00,072 - huggingface_hub.utils._http - WARNING - Retrying in 4s [Retry 3/5].
+2025-12-01 16:18:09,193 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 7ce3efa8-78e4-41ec-90f0-1dc9215405e7)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:18:09,193 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 4/5].
+2025-12-01 16:18:17,209 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 48128683-c86f-4835-9c09-b136fdce0bdf)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:18:17,210 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 5/5].
+2025-12-01 16:18:25,233 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 6712c253-0372-4524-9060-ce2b3061df64)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-01 16:18:25,234 - api - WARNING - Ошибка при alignment, возвращаем текст без word timestamps: The chosen align_model "jonatasgrosman/wav2vec2-large-xlsr-53-russian" could not be found in huggingface (https://huggingface.co/models) or torchaudio (https://pytorch.org/audio/stable/pipelines.html#id14)
+2025-12-01 16:18:25,234 - api - INFO - Генерация краткого содержания для аудио ID=63
+2025-12-01 16:18:25,235 - api - INFO - Используется Ollama API для генерации краткого содержания
+2025-12-01 16:18:25,235 - api - WARNING - Не удалось сгенерировать краткое содержание для ID=63
+2025-12-01 16:18:25,246 - api - INFO - Обработка аудио ID=63 завершена успешно
+2025-12-03 10:28:44,109 - __main__ - WARNING - llama-cpp-python не установлен, используется Ollama API
+2025-12-03 10:28:44,323 - api - WARNING - llama-cpp-python не установлен, используется Ollama API
+2025-12-03 10:28:44,328 - api - INFO - Запуск API сервиса...
+2025-12-03 10:28:44,328 - api - INFO - Загрузка модели Whisper из C:\Users\ahtyamovar\ecosys\transcription_ecosys\finetuned_whisper
+2025-12-03 10:28:44,329 - api - INFO - Используется устройство: cpu
+2025-12-03 10:28:45,507 - api - INFO - Модель Whisper успешно загружена
+2025-12-03 10:28:45,507 - api - WARNING - llama-cpp-python не доступен, будет использоваться Ollama API
+2025-12-03 10:29:09,868 - api - INFO - Аудиофайл ID=60 удален
+2025-12-08 09:16:09,631 - __main__ - WARNING - llama-cpp-python не установлен, используется Ollama API
+2025-12-08 09:16:09,852 - api - WARNING - llama-cpp-python не установлен, используется Ollama API
+2025-12-08 09:16:09,857 - api - INFO - Запуск API сервиса...
+2025-12-08 09:16:09,857 - api - INFO - Загрузка модели Whisper из C:\Users\ahtyamovar\homework\pi_project\transcription_ecosys\finetuned_whisper
+2025-12-08 09:16:09,857 - api - INFO - Используется устройство: cpu
+2025-12-08 09:16:10,793 - api - INFO - Модель Whisper успешно загружена
+2025-12-08 09:16:10,793 - api - WARNING - llama-cpp-python не доступен, будет использоваться Ollama API
+2025-12-08 09:22:09,412 - api - INFO - Файл загружен: 2023-04-13_2023_04_13-17_23_20-893877-893880.mp3 -> ID=64
+2025-12-08 09:22:09,413 - api - INFO - Начало обработки аудио ID=64
+2025-12-08 09:22:09,422 - audio_converter - INFO - Конвертация аудио: C:\Users\ahtyamovar\homework\pi_project\transcription_ecosys\uploads\2c97bf1e-d31b-41bf-93bb-79acf15cab93.mp3 -> C:\Users\ahtyamovar\homework\pi_project\transcription_ecosys\uploads\2c97bf1e-d31b-41bf-93bb-79acf15cab93_converted.wav
+2025-12-08 09:22:11,952 - audio_converter - INFO - Аудио успешно конвертировано. Длительность: 53.31с
+2025-12-08 09:22:11,963 - api - INFO - Начало транскрипции: C:\Users\ahtyamovar\homework\pi_project\transcription_ecosys\uploads\2c97bf1e-d31b-41bf-93bb-79acf15cab93_converted.wav
+2025-12-08 09:22:11,965 - api - INFO - Транскрипция с fine-tuned моделью...
+2025-12-08 09:23:17,655 - api - INFO - Загрузка модели для word-level alignment...
+2025-12-08 09:23:23,811 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 00b37d2c-ecac-4745-b0d9-27d117f3060c)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-08 09:23:23,812 - huggingface_hub.utils._http - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-08 09:23:24,830 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 3b1eb210-48d3-4ae4-9e08-a14d75aabb86)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-08 09:23:24,830 - huggingface_hub.utils._http - WARNING - Retrying in 2s [Retry 2/5].
+2025-12-08 09:23:31,940 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 2fb0d4b0-96d0-42e3-b350-70fccf5ff4e0)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-08 09:23:31,941 - huggingface_hub.utils._http - WARNING - Retrying in 4s [Retry 3/5].
+2025-12-08 09:23:36,008 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: eb188940-bea0-46c9-be36-6a5a31a3aace)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-08 09:23:36,009 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 4/5].
+2025-12-08 09:23:49,090 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 537b00f6-3bbf-46ea-a506-fb6b209e215e)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-08 09:23:49,091 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 5/5].
+2025-12-08 09:23:57,126 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: c44cdd46-10d4-40b3-8bbe-f1188551b21c)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-08 09:23:57,230 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 4d3d2f71-1db2-4523-91f2-1d861e1bc008)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-08 09:23:57,231 - huggingface_hub.utils._http - WARNING - Retrying in 1s [Retry 1/5].
+2025-12-08 09:23:58,259 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: be166284-f042-40bf-b2b1-ace3ba7247aa)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-08 09:23:58,259 - huggingface_hub.utils._http - WARNING - Retrying in 2s [Retry 2/5].
+2025-12-08 09:24:00,288 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 88ef6247-106c-4fa0-ad7f-cba2bf204677)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-08 09:24:00,289 - huggingface_hub.utils._http - WARNING - Retrying in 4s [Retry 3/5].
+2025-12-08 09:24:04,308 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: c29317d3-c2d5-44d1-995c-9bfc9b01c82b)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-08 09:24:04,309 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 4/5].
+2025-12-08 09:24:12,333 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: a64d434b-d2d5-4642-ad72-f60e3f0c57b6)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-08 09:24:12,334 - huggingface_hub.utils._http - WARNING - Retrying in 8s [Retry 5/5].
+2025-12-08 09:24:25,438 - huggingface_hub.utils._http - WARNING - '(MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 407 Proxy Authentication Required')))"), '(Request ID: 6d177b8e-2749-41d9-8e88-d545cccf9010)')' thrown while requesting HEAD https://huggingface.co/jonatasgrosman/wav2vec2-large-xlsr-53-russian/resolve/main/preprocessor_config.json
+2025-12-08 09:24:25,440 - api - WARNING - Ошибка при alignment, возвращаем текст без word timestamps: The chosen align_model "jonatasgrosman/wav2vec2-large-xlsr-53-russian" could not be found in huggingface (https://huggingface.co/models) or torchaudio (https://pytorch.org/audio/stable/pipelines.html#id14)
+2025-12-08 09:24:25,441 - api - INFO - Генерация краткого содержания для аудио ID=64
+2025-12-08 09:24:25,441 - api - INFO - Используется Ollama API для генерации краткого содержания
+2025-12-08 09:24:25,442 - api - INFO - Запрос генерации краткого содержания через Ollama (deepseek-r1:8b)...
+2025-12-08 09:24:27,449 - api - ERROR - Не удалось подключиться к Ollama. Убедитесь, что сервер запущен.
+2025-12-08 09:24:27,449 - api - WARNING - Не удалось сгенерировать краткое содержание для ID=64
+2025-12-08 09:24:27,459 - api - INFO - Обработка аудио ID=64 завершена успешно
