@@ -1,0 +1,26 @@
+# Игнорировать всё, кроме нужного для Docker образа
+.git
+.gitignore
+.github/
+tests/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.log
+logs/
+uploads/
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.vscode/
+.idea/
