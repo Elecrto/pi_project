@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск</title>
+    <link rel="icon" type="image/x-icon" href="/static/images/favicons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicons/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="/static/images/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="/static/images/favicons/site.webmanifest">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Боковое меню -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="{{ url_for('main') }}" class="sidebar-logo">
+                    <img src="/static/images/colored-logo.png" alt="Logo">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="{{ url_for('search') }}" class="nav-item active">
+                    <img src="/static/icons/search.svg" alt="">
+                    <span>Поиск</span>
+                </a>
+                <a href="{{ url_for('main') }}" class="nav-item">
+                    <img src="/static/icons/home.svg" alt="">
+                    <span>Главная</span>
+                </a>
+                <a href="{{ url_for('statistics') }}" class="nav-item">
+                    <img src="/static/icons/bar-chart.svg" alt="">
+                    <span>Статистика</span>
+                </a>
+                <a href="{{ url_for('favorites') }}" class="nav-item">
+                    <img src="/static/icons/star.svg" alt="">
+                    <span>Избранное</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">{{ user[0].upper() if user else 'U' }}</div>
+                    <div class="user-info">
+                        <div class="user-name">Пользователь</div>
+                        <div class="user-email">Администратор</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Основной контент -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <!-- Breadcrumbs -->
+                <div class="breadcrumb">
+                    <a href="{{ url_for('main') }}">
+                        <img src="/static/icons/home.svg" alt="" class="breadcrumb-icon">
+                        Главная
+                    </a>
+                    <span class="breadcrumb-separator">/</span>
+                    <span style="color: var(--text-primary);">Поиск</span>
+                </div>
+
+                <!-- Заголовок страницы -->
+                <div class="page-header" style="text-align: center;">
+                    <h1 class="page-title">Поиск по транскрипциям</h1>
+                    <p class="page-description">Найдите нужную информацию в обработанных аудиозаписях</p>
+                </div>
+
+                <!-- Форма поиска -->
+                <div class="card" style="margin-bottom: 24px;">
+                    <div class="card-body">
+                        <form method="GET" action="{{ url_for('search') }}">
+                            <div style="display: flex; gap: 12px;">
+                                <div style="flex: 1; position: relative;">
+                                    <input
+                                        type="text"
+                                        name="q"
+                                        value="{{ query }}"
+                                        placeholder="Введите текст для поиска..."
+                                        class="input"
+                                        style="width: 100%; padding: 14px 16px 14px 48px; font-size: 1rem; border: 1px solid var(--border-color); border-radius: var(--border-radius); outline: none; transition: border-color 0.2s;"
+                                        required
+                                    >
+                                    <img src="/static/icons/search.svg" alt="" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; opacity: 0.5;">
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    Найти
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Результаты поиска -->
+                {% if query %}
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                {% if results %}
+                                    Найдено: {{ results|length }} {{ 'результат' if results|length == 1 else 'результатов' }}
+                                {% else %}
+                                    Ничего не найдено
+                                {% endif %}
+                            </h3>
+                        </div>
+                        <div class="card-body" style="padding: 0;">
+                            {% if results %}
+                                <div class="table-container">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Имя файла</th>
+                                                <th>Дата обработки</th>
+                                                <th>Фрагмент</th>
+                                                <th style="text-align: right;"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for file in results %}
+                                            <tr>
+                                                <td>
+                                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                                        <img src="/static/icons/file-audio.svg" alt="" style="width: 18px; height: 18px; opacity: 0.5;">
+                                                        {{ file.original_filename }}
+                                                    </div>
+                                                </td>
+                                                <td style="color: var(--text-secondary); font-size: 0.875rem;">{{ file.processed_at or file.created_at }}</td>
+                                                <td>
+                                                    <div style="max-width: 400px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-secondary); font-size: 0.875rem;">
+                                                        {{ file.transcription[:150] }}...
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div style="display: flex; gap: 8px; justify-content: flex-end;">
+                                                        <a href="{{ url_for('audio_detail', audio_id=file.id, highlight=query) }}" class="btn btn-secondary btn-sm">
+                                                            <img src="/static/icons/eye.svg" alt="">
+                                                            Просмотр
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% else %}
+                                <div class="empty-state">
+                                    <img src="/static/icons/search.svg" alt="" class="empty-icon">
+                                    <h3 class="empty-title">По вашему запросу ничего не найдено</h3>
+                                    <p class="empty-description">Попробуйте изменить поисковый запрос</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </main>
+    </div>
+
+    <!-- Мобильное меню -->
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+    <button class="mobile-menu-toggle" onclick="toggleSidebar()">
+        <img src="/static/icons/menu.svg" alt="Menu">
+    </button>
+
+    <!-- Toast уведомления -->
+    <div class="toast-container" id="toast-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        <img src="/static/icons/{% if category == 'success' %}check-circle{% elif category == 'error' %}alert-circle{% else %}alert-circle{% endif %}.svg" alt="" class="alert-icon">
+                        <div class="alert-content">{{ message }}</div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        // Автоматическое скрытие toast уведомлений через 5 секунд
+        document.addEventListener('DOMContentLoaded', function() {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(function(alert) {
+                setTimeout(function() {
+                    alert.classList.add('fade-out');
+                    setTimeout(function() {
+                        alert.remove();
+                    }, 300);
+                }, 5000);
+            });
+        });
+    </script>
+</body>
+</html>

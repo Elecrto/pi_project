@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детали аудио</title>
+    <link rel="icon" type="image/x-icon" href="/static/images/favicons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicons/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="/static/images/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="/static/images/favicons/site.webmanifest">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Боковое меню -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="{{ url_for('main') }}" class="sidebar-logo">
+                    <img src="/static/images/colored-logo.png" alt="Logo">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="{{ url_for('search') }}" class="nav-item">
+                    <img src="/static/icons/search.svg" alt="">
+                    <span>Поиск</span>
+                </a>
+                <a href="{{ url_for('main') }}" class="nav-item">
+                    <img src="/static/icons/home.svg" alt="">
+                    <span>Главная</span>
+                </a>
+                <a href="{{ url_for('statistics') }}" class="nav-item">
+                    <img src="/static/icons/bar-chart.svg" alt="">
+                    <span>Статистика</span>
+                </a>
+                <a href="{{ url_for('favorites') }}" class="nav-item">
+                    <img src="/static/icons/star.svg" alt="">
+                    <span>Избранное</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">{{ user[0].upper() if user else 'U' }}</div>
+                    <div class="user-info">
+                        <div class="user-name">Пользователь</div>
+                        <div class="user-email">Администратор</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Основной контент -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <!-- Breadcrumbs -->
+                <div class="breadcrumb">
+                    <a href="{{ url_for('main') }}">
+                        <img src="/static/icons/home.svg" alt="" class="breadcrumb-icon">
+                        Главная
+                    </a>
+                    <span class="breadcrumb-separator">/</span>
+                    <span style="color: var(--text-primary);">Детали файла</span>
+                </div>
+
+                <!-- Заголовок страницы -->
+                <div class="page-header" style="text-align: center;">
+                    <h1 class="page-title">{{ audio.filename }}</h1>
+                    <p class="page-description">Детальная информация о транскрибации</p>
+                </div>
+
+                <!-- Карточка с информацией -->
+                <div class="card" style="margin-bottom: 24px;">
+                    <div class="card-header">
+                        <h3 class="card-title">Информация о файле</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-grid">
+                            <div class="info-label">Имя файла:</div>
+                            <div class="info-value">{{ audio.filename }}</div>
+
+                            <div class="info-label">Статус:</div>
+                            <div class="info-value">
+                                {% if audio.status == 'uploaded' %}
+                                    <span class="badge badge-info">
+                                        <span class="badge-dot"></span>
+                                        Загружен
+                                    </span>
+                                {% elif audio.status == 'processing' %}
+                                    <span class="badge badge-warning">
+                                        <span class="badge-dot"></span>
+                                        Обрабатывается
+                                    </span>
+                                {% elif audio.status == 'completed' %}
+                                    <span class="badge badge-success">
+                                        <span class="badge-dot"></span>
+                                        Завершен
+                                    </span>
+                                {% elif audio.status == 'error' %}
+                                    <span class="badge badge-error">
+                                        <span class="badge-dot"></span>
+                                        Ошибка
+                                    </span>
+                                {% endif %}
+                            </div>
+
+                            <div class="info-label">Дата загрузки:</div>
+                            <div class="info-value">{{ audio.created_at }}</div>
+
+                            {% if audio.processed_at %}
+                            <div class="info-label">Дата обработки:</div>
+                            <div class="info-value">{{ audio.processed_at }}</div>
+                            {% endif %}
+
+                            {% if audio.transcription %}
+                            <div class="info-label">Количество слов:</div>
+                            <div class="info-value">{{ audio.transcription.split()|length }}</div>
+                            {% endif %}
+                        </div>
+
+                        {% if audio.status == 'processing' or audio.status == 'uploaded' %}
+                            <div class="loading">
+                                <div class="spinner"></div>
+                                <p class="loading-text">Файл обрабатывается, пожалуйста подождите...</p>
+                                <button onclick="location.reload()" class="btn btn-secondary btn-sm" style="margin-top: 16px;">
+                                    <img src="/static/icons/refresh.svg" alt="">
+                                    Обновить статус
+                                </button>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Аудио плеер -->
+                {% if audio.status == 'completed' or audio.status == 'processing' %}
+                <div class="card sticky-audio-card" style="margin-bottom: 24px;">
+                    <div class="card-header">
+                        <h3 class="card-title">Аудиозапись</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="audio-player">
+                            <div class="audio-info">
+                                <div class="audio-icon">
+                                    <img src="/static/icons/file-audio.svg" alt="">
+                                </div>
+                                <div class="audio-meta">
+                                    <div class="audio-title">{{ audio.filename }}</div>
+                                    <div class="audio-duration">Исходная аудиозапись</div>
+                                </div>
+                            </div>
+                            <audio controls preload="metadata" id="main-audio">
+                                <source src="{{ url_for('get_audio', audio_id=audio.id) }}">
+                                Ваш браузер не поддерживает аудио элемент.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Транскрипция -->
+                {% if audio.status == 'completed' and audio.transcription %}
+                <div class="card">
+                    <div class="card-header" style="display: flex; align-items: center; justify-content: space-between;">
+                        <h3 class="card-title">Текст</h3>
+                        <button onclick="copyTranscription()" class="btn btn-secondary btn-sm">
+                            Копировать текст
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="transcription-box" id="transcription">
+                            {% if audio.word_timestamps %}
+                                <!-- Транскрипция с word timestamps -->
+                                <span id="transcription-words"></span>
+                            {% else %}
+                                <!-- Обычная транскрипция без timestamps -->
+                                {{ audio.transcription }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                {% if audio.word_timestamps %}
+                <!-- Данные для синхронизации -->
+                <script type="application/json" id="word-timestamps-data">
+                    {{ audio.word_timestamps|safe }}
+                </script>
+                {% endif %}
+                {% endif %}
+
+                <!-- Краткое содержание -->
+                {% if audio.status == 'completed' and audio.transcription %}
+                <div class="card" style="margin-top: 24px;">
+                    <div class="card-header" style="display: flex; align-items: center; justify-content: space-between;">
+                        <h3 class="card-title">Краткое содержание</h3>
+                        {% if audio.summary %}
+                        <button onclick="copySummary()" class="btn btn-secondary btn-sm">
+                            Копировать краткое содержание
+                        </button>
+                        {% endif %}
+                    </div>
+                    <div class="card-body">
+                        <div class="transcription-box" id="summary">
+                            {% if audio.summary %}
+                                {{ audio.summary }}
+                            {% else %}
+                                <div style="color: var(--text-secondary); font-style: italic;">
+                                    Генерация краткого содержания пока недоступна
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Ошибка -->
+                {% if audio.status == 'error' and audio.error_message %}
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title" style="color: var(--error-color);">Ошибка обработки</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-error">
+                            <img src="/static/icons/alert-circle.svg" alt="" class="alert-icon">
+                            <div class="alert-content">{{ audio.error_message }}</div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Действия -->
+                <div style="display: flex; gap: 12px; margin-top: 24px;">
+                    <a href="{{ url_for('main') }}" class="btn btn-secondary">
+                        <img src="/static/icons/arrow-left.svg" alt="">
+                        Назад к списку
+                    </a>
+                    <form method="POST" action="{{ url_for('toggle_favorite', audio_id=audio.id) }}" style="display: inline;">
+                        <button type="submit" class="btn btn-primary">
+                            <img src="/static/icons/{% if audio.is_favorite %}star-filled.svg{% else %}star.svg{% endif %}" alt="">
+                            {{ 'Удалить из избранного' if audio.is_favorite else 'Добавить в избранное' }}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Мобильное меню -->
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+    <button class="mobile-menu-toggle" onclick="toggleSidebar()">
+        <img src="/static/icons/menu.svg" alt="Menu">
+    </button>
+
+    <!-- Toast уведомления -->
+    <div class="toast-container" id="toast-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        <img src="/static/icons/{% if category == 'success' %}check-circle{% elif category == 'error' %}alert-circle{% else %}alert-circle{% endif %}.svg" alt="" class="alert-icon">
+                        <div class="alert-content">{{ message }}</div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `alert alert-${type}`;
+
+            const icon = type === 'success' ? 'check-circle' : 'alert-circle';
+            toast.innerHTML = `
+                <img src="/static/icons/${icon}.svg" alt="" class="alert-icon">
+                <div class="alert-content">${message}</div>
+            `;
+
+            container.appendChild(toast);
+
+            // Автоматическое скрытие через 3 секунды
+            setTimeout(function() {
+                toast.classList.add('fade-out');
+                setTimeout(function() {
+                    toast.remove();
+                }, 300);
+            }, 3000);
+        }
+
+        function copyTranscription() {
+            const text = document.getElementById('transcription').textContent;
+            navigator.clipboard.writeText(text).then(function() {
+                showToast('Текст скопирован в буфер обмена');
+            }, function(err) {
+                console.error('Ошибка копирования: ', err);
+                showToast('Ошибка при копировании текста', 'error');
+            });
+        }
+
+        function copySummary() {
+            const text = document.getElementById('summary').textContent;
+            navigator.clipboard.writeText(text).then(function() {
+                showToast('Краткое содержание скопировано в буфер обмена');
+            }, function(err) {
+                console.error('Ошибка копирования: ', err);
+                showToast('Ошибка при копировании текста', 'error');
+            });
+        }
+
+        // Получаем параметр highlight из URL
+        function getHighlightParam() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('highlight');
+        }
+
+        // Функция для подсветки текста в обычной транскрипции (без word timestamps)
+        function highlightTextInTranscription() {
+            const highlightWord = getHighlightParam();
+            if (!highlightWord) return;
+
+            const transcriptionDiv = document.getElementById('transcription');
+            if (!transcriptionDiv || transcriptionDiv.querySelector('#transcription-words')) return;
+
+            const text = transcriptionDiv.textContent;
+            const regex = new RegExp(`(${highlightWord})`, 'gi');
+            const highlightedText = text.replace(regex, '<mark class="search-highlight">$1</mark>');
+            transcriptionDiv.innerHTML = highlightedText;
+
+            // Прокручиваем к первому найденному слову
+            const firstHighlight = transcriptionDiv.querySelector('.search-highlight');
+            if (firstHighlight) {
+                firstHighlight.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        // Синхронизация подсветки слов с аудио
+        (function() {
+            const timestampsData = document.getElementById('word-timestamps-data');
+            if (!timestampsData) {
+                // Если нет word timestamps, применяем обычную подсветку
+                highlightTextInTranscription();
+                return;
+            }
+
+            try {
+                const words = JSON.parse(timestampsData.textContent);
+                const container = document.getElementById('transcription-words');
+                const audioElement = document.querySelector('audio');
+
+                if (!words || !container || !audioElement) return;
+
+                const highlightWord = getHighlightParam();
+
+                // Создаем HTML с словами
+                words.forEach((wordData, index) => {
+                    const span = document.createElement('span');
+                    span.className = 'word';
+                    span.textContent = wordData.word;
+                    span.setAttribute('data-start', wordData.start);
+                    span.setAttribute('data-end', wordData.end);
+                    span.setAttribute('data-index', index);
+
+                    // Если это искомое слово - добавляем класс для подсветки
+                    if (highlightWord && wordData.word.toLowerCase().includes(highlightWord.toLowerCase())) {
+                        span.classList.add('search-highlight');
+                    }
+
+                    // Клик по слову переключает аудио на это время
+                    span.addEventListener('click', function() {
+                        audioElement.currentTime = wordData.start;
+                        audioElement.play();
+                    });
+
+                    container.appendChild(span);
+                    container.appendChild(document.createTextNode(' '));
+                });
+
+                // Прокручиваем к первому найденному слову
+                if (highlightWord) {
+                    const firstHighlight = container.querySelector('.search-highlight');
+                    if (firstHighlight) {
+                        setTimeout(() => {
+                            firstHighlight.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }, 300);
+                    }
+                }
+
+                // Обновление подсветки при проигрывании
+                let currentWordIndex = -1;
+
+                audioElement.addEventListener('timeupdate', function() {
+                    const currentTime = audioElement.currentTime;
+
+                    for (let i = 0; i < words.length; i++) {
+                        if (currentTime >= words[i].start && currentTime <= words[i].end) {
+                            if (i !== currentWordIndex) {
+                                // Убираем подсветку с предыдущего слова
+                                if (currentWordIndex >= 0) {
+                                    const prevWord = container.querySelector(`[data-index="${currentWordIndex}"]`);
+                                    if (prevWord) prevWord.classList.remove('active-word');
+                                }
+
+                                // Добавляем подсветку к текущему слову
+                                const currentWord = container.querySelector(`[data-index="${i}"]`);
+                                if (currentWord) {
+                                    currentWord.classList.add('active-word');
+                                    // Прокручиваем к активному слову
+                                    currentWord.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }
+
+                                currentWordIndex = i;
+                            }
+                            break;
+                        }
+                    }
+                });
+
+                // Убираем подсветку когда аудио на паузе или закончилось
+                audioElement.addEventListener('pause', function() {
+                    if (currentWordIndex >= 0) {
+                        const prevWord = container.querySelector(`[data-index="${currentWordIndex}"]`);
+                        if (prevWord) prevWord.classList.remove('active-word');
+                    }
+                    currentWordIndex = -1;
+                });
+
+                audioElement.addEventListener('ended', function() {
+                    if (currentWordIndex >= 0) {
+                        const prevWord = container.querySelector(`[data-index="${currentWordIndex}"]`);
+                        if (prevWord) prevWord.classList.remove('active-word');
+                    }
+                    currentWordIndex = -1;
+                });
+
+            } catch (e) {
+                console.error('Ошибка при загрузке word timestamps:', e);
+            }
+        })();
+
+        // Автоматическое обновление для файлов в обработке
+        const status = '{{ audio.status }}';
+        if (status === 'uploaded' || status === 'processing') {
+            setTimeout(function() {
+                location.reload();
+            }, 3000);
+        }
+
+        // Автоматическое скрытие toast уведомлений через 5 секунд
+        document.addEventListener('DOMContentLoaded', function() {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(function(alert) {
+                setTimeout(function() {
+                    alert.classList.add('fade-out');
+                    setTimeout(function() {
+                        alert.remove();
+                    }, 300);
+                }, 5000);
+            });
+        });
+    </script>
+</body>
+</html>

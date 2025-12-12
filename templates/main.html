@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>
+    <link rel="icon" type="image/x-icon" href="/static/images/favicons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicons/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="/static/images/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="/static/images/favicons/site.webmanifest">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Боковое меню -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="{{ url_for('main') }}" class="sidebar-logo">
+                    <img src="/static/images/colored-logo.png" alt="Logo">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="{{ url_for('search') }}" class="nav-item">
+                    <img src="/static/icons/search.svg" alt="">
+                    <span>Поиск</span>
+                </a>
+                <a href="{{ url_for('main') }}" class="nav-item active">
+                    <img src="/static/icons/home.svg" alt="">
+                    <span>Главная</span>
+                </a>
+                <a href="{{ url_for('statistics') }}" class="nav-item">
+                    <img src="/static/icons/bar-chart.svg" alt="">
+                    <span>Статистика</span>
+                </a>
+                <a href="{{ url_for('favorites') }}" class="nav-item">
+                    <img src="/static/icons/star.svg" alt="">
+                    <span>Избранное</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">{{ user[0].upper() if user else 'U' }}</div>
+                    <div class="user-info">
+                        <div class="user-name">Пользователь</div>
+                        <div class="user-email">Администратор</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Основной контент -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <!-- Заголовок страницы -->
+                <div class="page-header" style="text-align: center;">
+                    <h1 class="page-title">Анализ аудиозаписей</h1>
+                    <p class="page-description">Стенограмма аудиозаписей интервью</p>
+                </div>
+
+                <!-- Карточка загрузки -->
+                <div class="card" style="margin-bottom: 32px;">
+                    <div class="card-header">
+                        <h3 class="card-title">Загрузить новый файл</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+                            <div class="file-upload">
+                                <input type="file" name="file" id="file" accept=".mp3,.wav,.m4a,.flac,.ogg,.wma,.aac" required>
+                                <label for="file" class="file-upload-label">
+                                    <img src="/static/icons/upload.svg" alt="" class="file-upload-icon">
+                                    <div class="file-upload-text">
+                                        <div class="file-upload-title">Выберите аудиофайл или перетащите сюда</div>
+                                        <div class="file-upload-hint">Поддерживаемые форматы: MP3, WAV, M4A, FLAC, OGG, WMA, AAC</div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div style="text-align: center;">
+                                <button type="submit" class="btn btn-primary" style="margin-top: 16px;">
+                                    <img src="/static/icons/upload.svg" alt="">
+                                    Загрузить и обработать
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Список файлов -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">История загрузок</h3>
+                    </div>
+                    <div class="card-body" style="padding: 0;">
+                        {% if files %}
+                            <div class="table-container">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Имя файла</th>
+                                            <th>Формат</th>
+                                            <th>Статус</th>
+                                            <th>Дата загрузки</th>
+                                            <th style="text-align: right;"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for file in files %}
+                                        <tr data-audio-id="{{ file.id }}" data-status="{{ file.status }}">
+                                            <td>
+                                                <div style="display: flex; align-items: center; gap: 8px;">
+                                                    <img src="/static/icons/file-audio.svg" alt="" style="width: 18px; height: 18px; opacity: 0.5;">
+                                                    {{ file.original_filename }}
+                                                </div>
+                                            </td>
+                                            <td><span style="font-family: var(--font-mono); font-size: 0.8125rem;">{{ file.format }}</span></td>
+                                            <td class="status-cell">
+                                                {% if file.status == 'uploaded' %}
+                                                    <span class="badge badge-info">
+                                                        <span class="badge-dot"></span>
+                                                        Загружен
+                                                    </span>
+                                                {% elif file.status == 'processing' %}
+                                                    <span class="badge badge-warning">
+                                                        <span class="badge-dot"></span>
+                                                        Обрабатывается
+                                                    </span>
+                                                {% elif file.status == 'completed' %}
+                                                    <span class="badge badge-success">
+                                                        <span class="badge-dot"></span>
+                                                        Завершен
+                                                    </span>
+                                                {% elif file.status == 'error' %}
+                                                    <span class="badge badge-error">
+                                                        <span class="badge-dot"></span>
+                                                        Ошибка
+                                                    </span>
+                                                {% endif %}
+                                            </td>
+                                            <td style="color: var(--text-secondary); font-size: 0.875rem;">{{ file.created_at }}</td>
+                                            <td>
+                                                <div style="display: flex; gap: 8px; justify-content: flex-end;">
+                                                    <a href="{{ url_for('audio_detail', audio_id=file.id) }}" class="btn btn-secondary btn-sm">
+                                                        <img src="/static/icons/eye.svg" alt="">
+                                                        Просмотр
+                                                    </a>
+                                                    <form method="POST" action="{{ url_for('toggle_favorite', audio_id=file.id) }}" style="display: inline;">
+                                                        <button type="submit" class="btn btn-secondary btn-sm" title="{{ 'Удалить из избранного' if file.is_favorite else 'Добавить в избранное' }}">
+                                                            <img src="/static/icons/{% if file.is_favorite %}star-filled.svg{% else %}star.svg{% endif %}" alt="">
+                                                        </button>
+                                                    </form>
+                                                    <form method="POST" action="{{ url_for('delete', audio_id=file.id) }}" style="display: inline;">
+                                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Вы уверены что хотите удалить этот файл?')">
+                                                            <img src="/static/icons/trash.svg" alt="">
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {% else %}
+                            <div class="empty-state">
+                                <img src="/static/icons/file-audio.svg" alt="" class="empty-icon">
+                                <h3 class="empty-title">Нет загруженных файлов</h3>
+                                <p class="empty-description">Загрузите свой первый аудиофайл для транскрибации</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Мобильное меню -->
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+    <button class="mobile-menu-toggle" onclick="toggleSidebar()">
+        <img src="/static/icons/menu.svg" alt="Menu">
+    </button>
+
+    <!-- Toast уведомления -->
+    <div class="toast-container" id="toast-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        <img src="/static/icons/{% if category == 'success' %}check-circle{% elif category == 'error' %}alert-circle{% else %}alert-circle{% endif %}.svg" alt="" class="alert-icon">
+                        <div class="alert-content">{{ message }}</div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        // Обновление имени файла при выборе
+        document.getElementById('file').addEventListener('change', function(e) {
+            const fileName = e.target.files[0]?.name;
+            if (fileName) {
+                const label = document.querySelector('.file-upload-title');
+                label.textContent = fileName;
+            }
+        });
+
+        // Автоматическое скрытие toast уведомлений через 5 секунд
+        document.addEventListener('DOMContentLoaded', function() {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(function(alert) {
+                setTimeout(function() {
+                    alert.classList.add('fade-out');
+                    setTimeout(function() {
+                        alert.remove();
+                    }, 300);
+                }, 5000);
+            });
+        });
+
+        // Динамическое обновление статусов обработки
+        function updateStatusBadge(statusCell, newStatus) {
+            const statusMap = {
+                'uploaded': {
+                    class: 'badge-info',
+                    text: 'Загружен'
+                },
+                'processing': {
+                    class: 'badge-warning',
+                    text: 'Обрабатывается'
+                },
+                'completed': {
+                    class: 'badge-success',
+                    text: 'Завершен'
+                },
+                'error': {
+                    class: 'badge-error',
+                    text: 'Ошибка'
+                }
+            };
+
+            const config = statusMap[newStatus];
+            if (!config) return;
+
+            statusCell.innerHTML = `
+                <span class="badge ${config.class}">
+                    <span class="badge-dot"></span>
+                    ${config.text}
+                </span>
+            `;
+        }
+
+        async function checkProcessingStatuses() {
+            // Находим все строки со статусом "processing" или "uploaded"
+            const processingRows = document.querySelectorAll('tr[data-status="processing"], tr[data-status="uploaded"]');
+
+            if (processingRows.length === 0) {
+                return; // Нет файлов для проверки
+            }
+
+            // Проверяем статус каждого файла
+            for (const row of processingRows) {
+                const audioId = row.getAttribute('data-audio-id');
+                const currentStatus = row.getAttribute('data-status');
+
+                try {
+                    const response = await fetch(`http://localhost:8000/status/${audioId}`);
+                    const data = await response.json();
+
+                    // Если статус изменился
+                    if (data.status !== currentStatus) {
+                        // Обновляем data-атрибут
+                        row.setAttribute('data-status', data.status);
+
+                        // Обновляем бейдж статуса
+                        const statusCell = row.querySelector('.status-cell');
+                        updateStatusBadge(statusCell, data.status);
+
+                        // Если файл обработан успешно - показываем уведомление
+                        if (data.status === 'completed') {
+                            console.log(`Файл "${data.filename}" успешно обработан`);
+                        } else if (data.status === 'error') {
+                            console.error(`Ошибка обработки файла "${data.filename}": ${data.error_message}`);
+                        }
+                    }
+                } catch (error) {
+                    console.error(`Ошибка при проверке статуса файла ${audioId}:`, error);
+                }
+            }
+        }
+
+        // Запускаем проверку каждые 2 секунды
+        document.addEventListener('DOMContentLoaded', function() {
+            // Начальная проверка через 1 секунду после загрузки страницы
+            setTimeout(checkProcessingStatuses, 1000);
+
+            // Затем проверяем каждые 2 секунды
+            setInterval(checkProcessingStatuses, 2000);
+        });
+    </script>
+</body>
+</html>

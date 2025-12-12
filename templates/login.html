@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход</title>
+    <link rel="icon" type="image/x-icon" href="/static/images/favicons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicons/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="/static/images/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="/static/images/favicons/site.webmanifest">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-logo">
+            <img src="/static/images/colored-logo.png" alt="Logo">
+        </div>
+
+        <h1 class="auth-title">Транскрибация аудио</h1>
+        <p class="auth-subtitle">Добро пожаловать!</p>
+
+
+        <form method="POST" action="{{ url_for('login') }}">
+            <div class="form-group">
+                <label for="username" class="form-label">Имя пользователя</label>
+                <div style="position: relative;">
+                    <input type="text" id="username" name="username" class="form-input" placeholder="Введите имя пользователя" required autofocus style="padding-left: 40px;">
+                    <img src="/static/icons/user.svg" alt="" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px;">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label">Пароль</label>
+                <div style="position: relative;">
+                    <input type="password" id="password" name="password" class="form-input" placeholder="Введите пароль" required style="padding-left: 40px;">
+                    <img src="/static/icons/lock.svg" alt="" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px;">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg">Войти в систему</button>
+        </form>
+    </div>
+
+    <!-- Toast уведомления -->
+    <div class="toast-container" id="toast-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        <img src="/static/icons/{% if category == 'success' %}check-circle{% elif category == 'error' %}alert-circle{% else %}alert-circle{% endif %}.svg" alt="" class="alert-icon">
+                        <div class="alert-content">{{ message }}</div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <script>
+        // Автоматическое скрытие toast уведомлений через 5 секунд
+        document.addEventListener('DOMContentLoaded', function() {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(function(alert) {
+                setTimeout(function() {
+                    alert.classList.add('fade-out');
+                    setTimeout(function() {
+                        alert.remove();
+                    }, 300);
+                }, 5000);
+            });
+        });
+    </script>
+</body>
+</html>
