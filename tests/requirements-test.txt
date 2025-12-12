@@ -6,3 +6,4 @@ flake8>=6.0.0
 codecov>=2.1.0
 fastapi>=0.109.0
 Flask>=3.0.0
+starlette>=0.35.1
