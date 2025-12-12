@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статистика</title>
+    <link rel="icon" type="image/x-icon" href="/static/images/favicons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicons/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="/static/images/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="/static/images/favicons/site.webmanifest">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Боковое меню -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="{{ url_for('main') }}" class="sidebar-logo">
+                    <img src="/static/images/colored-logo.png" alt="Logo">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="{{ url_for('search') }}" class="nav-item">
+                    <img src="/static/icons/search.svg" alt="">
+                    <span>Поиск</span>
+                </a>
+                <a href="{{ url_for('main') }}" class="nav-item">
+                    <img src="/static/icons/home.svg" alt="">
+                    <span>Главная</span>
+                </a>
+                <a href="{{ url_for('statistics') }}" class="nav-item active">
+                    <img src="/static/icons/bar-chart.svg" alt="">
+                    <span>Статистика</span>
+                </a>
+                <a href="{{ url_for('favorites') }}" class="nav-item">
+                    <img src="/static/icons/star.svg" alt="">
+                    <span>Избранное</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">{{ user[0].upper() if user else 'U' }}</div>
+                    <div class="user-info">
+                        <div class="user-name">Пользователь</div>
+                        <div class="user-email">Администратор</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Основной контент -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <!-- Breadcrumbs -->
+                <div class="breadcrumb">
+                    <a href="{{ url_for('main') }}">
+                        <img src="/static/icons/home.svg" alt="" class="breadcrumb-icon">
+                        Главная
+                    </a>
+                    <span class="breadcrumb-separator">/</span>
+                    <span style="color: var(--text-primary);">Статистика</span>
+                </div>
+
+                <!-- Заголовок страницы -->
+                <div class="page-header" style="text-align: center;">
+                    <h1 class="page-title">Статистика обработки</h1>
+                    <p class="page-description">Общая информация о загруженных и обработанных файлах</p>
+                </div>
+
+                <!-- Карточки статистики -->
+                {% if stats %}
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-bottom: 32px;">
+
+                    <!-- Завершено -->
+                    <div class="card">
+                        <div class="card-body" style="text-align: center;">
+                            <div style="font-size: 3rem; font-weight: 700; color: var(--success-color); margin-bottom: 8px;">
+                                {{ stats.completed_files }}
+                            </div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary);">
+                                Обработано успешно(всего)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Всего файлов -->
+                    <div class="card">
+                        <div class="card-body" style="text-align: center;">
+                            <div style="font-size: 3rem; font-weight: 700; color: var(--primary-color); margin-bottom: 8px;">
+                                {{ stats.total_files }}
+                            </div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary);">
+                                Заружено файлов
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- В обработке -->
+                    <div class="card">
+                        <div class="card-body" style="text-align: center;">
+                            <div style="font-size: 3rem; font-weight: 700; color: var(--warning-color); margin-bottom: 8px;">
+                                {{ stats.processing_files }}
+                            </div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary);">
+                                В обработке
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ошибки -->
+                    <div class="card">
+                        <div class="card-body" style="text-align: center;">
+                            <div style="font-size: 3rem; font-weight: 700; color: var(--error-color); margin-bottom: 8px;">
+                                {{ stats.error_files }}
+                            </div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary);">
+                                С ошибками
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Дополнительная статистика -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Детальная статистика</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-grid">
+                            <div class="info-label">Общая длительность загруженных аудио:</div>
+                            <div class="info-value">
+                                {% set hours = (stats.total_duration // 3600)|int %}
+                                {% set minutes = ((stats.total_duration % 3600) // 60)|int %}
+                                {% set seconds = (stats.total_duration % 60)|int %}
+                                {{ '%02d:%02d:%02d'|format(hours, minutes, seconds) }}
+                            </div>
+
+                            <div class="info-label">Средняя длительность файла:</div>
+                            <div class="info-value">
+                                {% set avg_minutes = (stats.avg_duration // 60)|int %}
+                                {% set avg_seconds = (stats.avg_duration % 60)|int %}
+                                {{ '%02d:%02d'|format(avg_minutes, avg_seconds) }}
+                            </div>
+
+                            <div class="info-label">Общий объем данных:</div>
+                            <div class="info-value">
+                                {% set size_mb = stats.total_size / (1024 * 1024) %}
+                                {% if size_mb >= 1024 %}
+                                    {% set size_gb = size_mb / 1024 %}
+                                    {{ '%.2f'|format(size_gb) }} ГБ
+                                {% else %}
+                                    {{ '%.2f'|format(size_mb) }} МБ
+                                {% endif %}
+                            </div>
+
+                            <div class="info-label">Процент успешной обработки:</div>
+                            <div class="info-value">
+                                <span class="badge badge-success">
+                                    {{ '%.1f'|format(stats.success_rate) }}%
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Прогресс-бар успешности -->
+                        <div style="margin-top: 24px;">
+                            <div style="height: 8px; background: var(--bg-secondary); border-radius: 4px; overflow: hidden;">
+                                <div style="height: 100%; background: var(--success-color); width: {{ stats.success_rate }}%; transition: width 0.3s ease;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="card">
+                    <div class="card-body">
+                        <div class="empty-state">
+                            <img src="/static/icons/bar-chart.svg" alt="" class="empty-icon">
+                            <h3 class="empty-title">Нет данных для отображения</h3>
+                            <p class="empty-description">Загрузите первый файл, чтобы увидеть статистику</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </main>
+    </div>
+
+    <!-- Мобильное меню -->
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+    <button class="mobile-menu-toggle" onclick="toggleSidebar()">
+        <img src="/static/icons/menu.svg" alt="Menu">
+    </button>
+
+    <!-- Toast уведомления -->
+    <div class="toast-container" id="toast-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        <img src="/static/icons/{% if category == 'success' %}check-circle{% elif category == 'error' %}alert-circle{% else %}alert-circle{% endif %}.svg" alt="" class="alert-icon">
+                        <div class="alert-content">{{ message }}</div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        // Автоматическое скрытие toast уведомлений через 5 секунд
+        document.addEventListener('DOMContentLoaded', function() {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(function(alert) {
+                setTimeout(function() {
+                    alert.classList.add('fade-out');
+                    setTimeout(function() {
+                        alert.remove();
+                    }, 300);
+                }, 5000);
+            });
+        });
+    </script>
+</body>
+</html>

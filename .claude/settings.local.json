@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(for icon in eye.svg trash.svg arrow-left.svg logout.svg)",
+      "Bash(do echo \"=== $icon ===\")",
+      "Bash(cat:*)",
+      "Bash(done)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,0 +1,62 @@
+# Python
+*.py[cod]
+*$py.class
+*.so
+.Python
+__pycache__/
+*.pyc
+venv/
+env/
+ENV/
+.venv
+
+# Django
+*.log
+db.sqlite3
+db.sqlite3-journal
+/media
+/staticfiles
+/static_root
+*.pot
+
+# Environment (НЕ КОММИТИТЬ!)
+.env
+.env.local
+.env.production
+.env.development
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Audio files
+audio/*.wav
+audio/*.mp3
+audio/*.m4a
+audio/*.flac
+
+# Logs
+logs/*.log
+logs/*.pid
+
+# Models
+finetuned_whisper/
+local_models/
+
+# Uploads
+uploads/
+
+# Temporary files
+*.tmp
+*.bak
+*.cache
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
